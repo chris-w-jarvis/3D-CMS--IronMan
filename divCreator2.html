@@ -1,0 +1,133 @@
+<html>
+<head>
+  <!-- CORE CSS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src = "js/divCreator.js"></script>
+  <link href="materialize-v3.0/demo/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="materialize-v3.0/demo/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+  <div id = "content">
+
+    <!-- materialize dropdown menu in form-->
+  <div id="input-select" class="row">
+    <div class="col s12 m8 l9">
+      <h4>Hi User, which type of card do you want to create?</h4>
+      <!-- values in option tags correspond to index of list in js that displays correct card creation form-->
+      <form action="javascript:void(0);" onSubmit="displayCardCreator()">
+      <div class="input-field col s12">
+        <label>Card Selector</label>
+        <select id="select_card">
+          <option value="0">Simple Card</option>
+          <option value="1">Contact Info Card</option>
+          <option value="2">Blog Post Card</option>
+          <option value="3">Image Card</option>
+          <option value="4">Task List Card</option>
+          <option value="" disabled>Task Management Card</option>
+        </select>
+        <input type="submit" text="Submit">
+      </div>
+    </form>
+    </div>
+  </div>
+  <!-- end materialize form; here are forms to create various cards, all hidden initially;
+  each form will call the DivCreator function that grabs its arguments and the adds a new
+  card to the page with them; the arg passed to DivCreator() lets js code know which card
+  is being made-->
+  <div id = "cardCreators">
+
+    <!-- Simple Card, just text and description-->
+    <div class='DivForm' id="Simple">
+      <h2>Simple Card Creator</h2><br>
+      <form onSubmit = 'divCreator("Simple")' action='javascript:void(0);'>
+        Card Title:<br>
+        <input id = 'heading_simple' type = 'text'><br>
+        Description:<br>
+        <input id = 'desc_simple' type = 'text'><br>
+        <input type = 'submit' text = 'Submit'>
+      </form>
+    </div>
+
+    <!-- Contact info card, more information-->
+    <div class='DivForm' id="Contact">
+      <h2>Contact Info Card Creator</h2><br>
+      <form onSubmit = 'divCreator("Contact")' action='javascript:void(0);'>
+        Name of Person or Business:<br>
+        <input id = 'heading_contact' type = 'text'><br>
+        Occupation:<br>
+        <input id = 'occupation_contact' type = 'text'><br>
+        Phone:<br>
+        <input id = 'phone_contact' type = 'text'><br>
+        Email:<br>
+        <input id = 'email_contact' type = 'text'><br>
+        Longer Description:<br>
+        <input id = 'desc_contact' type = 'text'><br>
+        <input type = 'submit' text = 'Submit'>
+      </form>
+    </div>
+
+    <!-- Blog post card, title, link, text-->
+    <div class='DivForm' id="Blog">
+      <h2>Blog Post Creator</h2><br>
+      <form onSubmit = 'divCreator("Blog")' action='javascript:void(0);'>
+        Card Title:<br>
+        <input id = 'heading_blog' type = 'text'><br>
+        Web Link:<br>
+        <input id = 'link_blog' type = 'text'><br>
+        Inner Text:<br>
+        <input id = 'desc_blog' type = 'text'><br>
+        <input type = 'submit' text = 'Submit'>
+      </form>
+    </div>
+
+    <!-- Image Card, display image, title, and link-->
+    <div class='DivForm' id="Image">
+      <h2>Image Card Creator</h2><br>
+      <form onSubmit = 'divCreator("Image")' action='javascript:void(0);'>
+        Image Title:<br>
+        <input id = 'heading_image' type = 'text'><br>
+        Web Link:<br>
+        <input id = 'link_image' type = 'text'><br>
+        Short Description:<br>
+        <input id = 'desc_image' type = 'text'><br>
+        <input type = 'submit' text = 'Submit'>
+      </form>
+    </div>
+
+    <!-- Task List card, lets you add multiple tasks and their due dates-->
+    <div class='DivForm' id="Task">
+      <h2>Task List Creator</h2><br>
+      <form onSubmit = 'taskCreator()' action='javascript:void(0);'>
+        Title for Card:<br>
+        <input id = 'heading_task' type = 'text'><br>
+        Date:<br>
+        <input id = 'date_task' type = 'text'><br>
+        <!-- additional task inputs will be appended to this div-->
+        <div id="TaskHolder">
+            Task 1:<br>
+            <input id = 'task_task1' type = 'text'><br>
+            <!-- eventually add date/time plugins for selection here-->
+            Complete by:<br>
+            <input id = 'date_task1' type = 'text'><br>
+            Add a tag or category:<br>
+            <input id = 'tag_task1' type = 'text'><br>
+        </div>
+        <button type="button" onClick="newTask()">New Task</button><br>
+        <!-- eventually here there will be a color option for the tag-->
+        <input type = 'submit' text = 'Submit'>
+      </form>
+    </div>
+  </div>
+  <!-- actual cards go here-->
+  <div id = "cardHolder"></div>
+</div>
+  <!-- this is from materialize and does something to the form element that i still don't understand-->
+  <script type="text/javascript" src="materialize-v3.0/demo/js/materialize.js"></script>
+  <!--scrollbar-->
+  <script type="text/javascript" src="materialize-v3.0/demo/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+  <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+  <script type="text/javascript" src="materialize-v3.0/demo/js/plugins.js"></script>
+</body>
+</html>
