@@ -12,7 +12,7 @@ var taskCounter = 1;
 // has a list of the corresponding card type to give to client (organized by index)
 // based on their selection, unhides and hides different card creator forms
 function displayCardCreator() {
-  var cardForms = ["Simple", "Contact", "Blog", "Image", "Task"];
+  var cardForms = ["Simple", "Contact", "Blog", "Image", "Task", "Chart"];
   // hide form
   $('#input-select').hide();
   // add new card button and top of page button to bottom of page after first card
