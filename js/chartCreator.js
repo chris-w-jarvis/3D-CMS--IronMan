@@ -23,9 +23,6 @@ function chartCreator(type) {
     var yTitle = data[2]['value'];
     // grab data series and parse to floats
     var yAxData = data[3]['value'].split(",");
-    for (var i = 0; i < yAxData.length; i++) {
-      yAxData[i] = parseFloat(yAxData[i]);
-    }
     // x data series
     var xAxData = [];
     for (var i = 0; i < xSeriesCount; i++) {
@@ -36,12 +33,17 @@ function chartCreator(type) {
       xAxData.push(raw);
     }
     // create chart with chartist
-    $('#cardHolder').append('<div class="ct-chart ct-perfect-fourth"></div>');
+    $('#cardHolder').append('<div><h4>'+title+'</h4><div class="ct-chart"></div></div>');
     var chartData = {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      labels: yAxData,
       series: xAxData
     };
-    new Chartist.Line('.ct-chart', data);
+    // at some point, the user will be able to configure this sizing
+    var options = {
+      width: 600,
+      height: 400
+    };
+    new Chartist.Line('.ct-chart', chartData, options);
 
   }
   // hide form
