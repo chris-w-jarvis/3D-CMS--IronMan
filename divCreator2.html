@@ -4,7 +4,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="chartist/chartist.min.js"></script>
   <script src = "js/divCreator.js"></script>
-  <script src = "js/chartCreator.js"></script>
   <link href="materialize-v3.0/demo/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="materialize-v3.0/demo/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="styles.css" type="text/css" rel="stylesheet">
@@ -133,7 +132,7 @@
             <select id="select_chart">
               <option value="0">Line Chart</option>
               <option value="1">Bar Chart</option>
-              <option value="2">Pie Chart</option>
+              <option disabled value="2">Pie Chart</option>
             </select>
             <input type="submit" text="Submit">
           </div>
@@ -142,7 +141,8 @@
       </div>
       <!-- Charts; run similar to above forms; chartCreator is run for that type of chart
            and that grabs the data for the chart and makes it-->
-      <form class="DivForm" id="Line" onSubmit="chartCreator(Line)" action="javascript:void(0);">
+      <form class="DivForm" id="chartForm" action="javascript:void(0);">
+        <h4>Chart Creator</h4>
         <div id="line_chart_creator">
           Title of Chart:<br>
           <input name="line_title" type="text"><br>
@@ -163,9 +163,46 @@
         <input type="submit" text="Submit">
       </form>
       <!-- Bar chart-->
-      <form class="DivForm" id="Bar" onSubmit="chartCreator(Bar)" action="javascript:void(0);">BAR CHART</form>
+      <form class="DivForm" id="Bar" onSubmit="chartCreator('Bar')" action="javascript:void(0);">
+        <div id="line_chart_creator">
+          Title of Chart:<br>
+          <input name="line_title" type="text"><br>
+          X-axis title:<br>
+          <input name="line_x-ax_title" type="text"><br>
+          Y-axis title:<br>
+          <input name="line_y-ax_title" type="text"><br>
+          <!-- add bar chart data here; x series are their own div so they more data
+               series can be appended to it-->
+          Data Labels for X-axis (seperate with commas):<br>
+          <input name="line_y-ax_data" type="text"><br>
+          <div id = "bar_x-ax_data_div">
+            Data for Series(seperate with commas):<br>
+            <input name = "bar_x-ax-data1" class="bar_x-ax-data" type="text"><br>
+          </div>
+        </div>
+        <button type="button" onClick="newXSeries()">Add Series</button><br>
+        <input type="submit" text="Submit">
+      </form>
       <!-- Pie chart-->
-      <form class="DivForm" id="Pie" onSubmit="chartCreator(Pie)" action="javascript:void(0);">PIE CHART</form>
+      <form class="DivForm" id="Pie" onSubmit="chartCreator('Pie')" action="javascript:void(0);">
+        <div id="line_chart_creator">
+          Title of Chart:<br>
+          <input name="line_title" type="text"><br>
+          X-axis title:<br>
+          <input name="line_x-ax_title" type="text"><br>
+          Y-axis title:<br>
+          <input name="line_y-ax_title" type="text"><br>
+          <!-- add bar chart data here; x series are their own div so they more data
+               series can be appended to it-->
+          Data Labels for X-axis (seperate with commas):<br>
+          <input name="line_y-ax_data" type="text"><br>
+          <div id = "bar_x-ax_data_div">
+            Data for Series(seperate with commas):<br>
+            <input name = "bar_x-ax-data1" class="bar_x-ax-data" type="text"><br>
+          </div>
+        </div>
+        <input type="submit" text="Submit">
+      </form>
     </div>
   </div>
   <!-- actual cards go here-->

@@ -2,7 +2,9 @@
 function showChartForm() {
   chartTypes = ["Line", "Bar", "Pie"];
   var chartType = $("#select_chart").val();
-  $("#"+chartTypes[chartType]).show();
+  console.log(chartTypes[chartType]);
+  $("#chartForm").submit(function() {chartCreator(chartTypes[chartType])});
+  $("#chartForm").show();
   $("#input-select2").hide();
 };
 // counter for x series
@@ -14,9 +16,9 @@ function newXSeries() {
 };
 // Chart Creator function, grabs data and uses chartist to add a chart to the page
 function chartCreator(type) {
-  if (type) {
+  console.log(type);
     // get data
-    var data = $('#Line').serializeArray();
+    var data = $('#chartForm').serializeArray();
     // parse data to variables
     var title = data[0]['value'];
     var xTitle = data[1]['value'];
@@ -43,9 +45,12 @@ function chartCreator(type) {
       width: 600,
       height: 400
     };
-    new Chartist.Line('.ct-chart', chartData, options);
+    if (type=="Line") {
+      new Chartist.Line('.ct-chart', chartData, options);
+    } else {
+      new Chartist.Bar('.ct-chart', chartData, options);
+    }
 
-  }
   // hide form
   $('#Chart').hide();
 };
