@@ -120,6 +120,8 @@ function divCreator(type) {
     }
   // add card to page
   $("#cardHolder").append(newDiv);
+  // add delete button to card
+  $("#" + id).append("<input type='button' value='Delete Card' onClick=removeElement("+"'"+id+"'"+")>")
   // scroll to card
   $('html, body').animate({
         scrollTop: $("#" + id).offset().top
@@ -176,6 +178,8 @@ function taskCreator() {
   newDiv += '</ul></div>';
   // add to page, same as in DivCreator
   $("#cardHolder").append(newDiv);
+  // delete button
+  $("#" + id).append("<input type='button' value='Delete Card' onClick=removeElement("+"'"+id+"'"+")>")
   // scroll to card
   $('html, body').animate({
         scrollTop: $("#" + id).offset().top
@@ -253,12 +257,14 @@ function chartCreator(type) {
       width: 600,
       height: 400
     };
+    // line or bar chart
     if (type=="Line") {
       new Chartist.Line('#'+id, chartData, options);
     } else {
-      new Chartist.Bar('.ct-chart', chartData, options);
+      new Chartist.Bar('#'+id, chartData, options);
     }
-
+    // delete button
+    $("#" + id).append("<input type='button' value='Delete Card' onClick=removeElement("+"'"+id+"'"+")>")
   // hide form
   $('#Chart').hide();
   $("input[type='text']").val("");
