@@ -1,8 +1,8 @@
 // Div Creator functions to display forms and newly created cards to client
-// CURRENT ISSUES: doesn't clear form for new cards, no image function yet,
+// CURRENT ISSUES: no image function yet, extra tasks and data series form elements remain after clearance,
 // cards aren't sized correctly
 
-// NEXT STEPS: fix form clearing, add image options to those cards
+// NEXT STEPS: add image options to those cards
 
 // give each new div a unique id so that they can be scrolled to correctly
 var divCounter = 0;
@@ -126,6 +126,7 @@ function divCreator(type) {
     }, 1000);
   // hide form
   $(".DivForm").hide();
+  $("input[type='text']").val("");
 };
 
 // adds a new task input to the TaskCreator form, using the taskCounter var, and
@@ -183,6 +184,7 @@ function taskCreator() {
   $(".DivForm").hide();
   // reset task counter
   taskCounter = 1;
+  $("input[type='text']").val("");
 };
 
 
@@ -259,4 +261,5 @@ function chartCreator(type) {
 
   // hide form
   $('#Chart').hide();
+  $("input[type='text']").val("");
 };
