@@ -263,6 +263,8 @@ function chartCreator(type) {
     } else {
       new Chartist.Bar('#'+id, chartData, options);
     }
+    // save chart
+    saveChart(data);
     // delete button
     $("#" + id).append("<input type='button' value='Delete Card' onClick=removeElement("+"'"+id+"'"+")>")
   // hide form
